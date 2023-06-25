@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>svg</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="line-container">
+
+        <svg viewBox="0 0 87 497" fill="none" preserveAspectRatio="xMidYMax meet">
+            <path d="M39 0V154C56.6 146 76.3333 162 84 171L77 191L39 209L33 238H9L3 286L33 319V497" stroke="white" stroke-width="5"/>
+            </svg>
+    </div>
+    <section class="one">
+        <h1 class="scroll" data-rate=".4" data-direction="vertical">shooz</h1>
+    </section>
+    <section class="two">
+        <h1 class="scroll" data-rate=".2" data-direction="vertical">design</h1>
+        <p>watermark</p>
+    </section>
+
+    <script>
+        let path = document.querySelector('path')
+        let pathlength = path.getTotalLength()
+
+        path.style.strokeDasharray = pathlength + ' ' + pathlength;
+        path.style.strokeDashoffset = pathlength;
+        window.addEventListener('scroll', () => {
+            var scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
+            var drawLength = pathLength * scrollPercentage;
+            path.style.strokeDashoffset = pathLength - drawLength;
+        })
+    </script>
+</body>
+
+</html>
